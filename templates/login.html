@@ -1,16 +1,6 @@
-{% include "head.html" %}
+{% extends "base_template.html" %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class=flashes>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
-{% block body %}
-{% include "header.html" %}
+{% block content %}
 
 {% if session['logged_in'] %}
 <div class="container text-center">
@@ -39,5 +29,4 @@
     </div>
 </div>
 {% endif %}
-{% include "footer.html" %}
 {% endblock %}

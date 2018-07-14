@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        {% include "head.html" %}
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% include "header.html" %}
+        <section id="content">
+            {% block content %}{% endblock %}
+        </section>
+        {% include "footer.html" %}
+    </body>
+</html>

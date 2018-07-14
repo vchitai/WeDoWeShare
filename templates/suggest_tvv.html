@@ -1,12 +1,9 @@
-{% include "head.html" %}
-{% block body %}
-{% include "header.html" %}
+{% extends "base_template.html" %}
 
-
-    <div class="containerBg">
-        <div class="container">
-            <a href="/tim-partner">Suggest</a>
-        </div>
+{% block content %}
+<div class="containerBg">
+    <div class="container">
+        <a href="/tim-partner">Suggest</a>
     </div>
-{% include "footer.html" %}
+</div>
 {% endblock %}

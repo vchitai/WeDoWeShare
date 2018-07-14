@@ -1,7 +1,14 @@
 import simplejson
 from werkzeug.security import generate_password_hash, \
      check_password_hash
+import json
+from bson import ObjectId
 
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
 from app import mongo
 
 with open("summary.json", "r") as f:

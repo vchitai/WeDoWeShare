@@ -1,0 +1,91 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+<div class="containerBg">
+    <div class="container">
+        <!--Title-->
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/nganh/{{ nganh_root }}">
+                    <button class="prev">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>{{ nganh }}
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div id="title">Chọn trường đào tạo {{ nganh }}</div>
+            </div>
+        </div>
+        <!--Major-->
+        <div class="row" style="margin-bottom: 50px;">
+            <div class="col-md-3 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
+                <div class="fieldGroup area-group">
+                    <div class="fieldGroup-tit">
+                        <span class="glyphicon glyphicon-globe" style="margin-right: 10px;"></span>
+                        Khu vực
+                    </div>
+                    <!-- <div class="fieldContent fieldSelected">Tp. Hồ Chí Minh</div> -->
+                    <!-- <div id="btnMore" class="seeMore">Xem thêm</div> -->
+                </div>
+                <div class="fieldGroup">
+                    <div class="fieldGroup-tit">
+                        <span class="glyphicon glyphicon-usd" style="margin-right: 10px;"></span>
+                        Học phí
+                    </div>
+                    <div class="fieldContent">5.000.000 VNĐ/năm</div>
+                    <div class="fieldContent">10.000.000 VNĐ/năm</div>
+                    <div class="fieldContent fieldSelected">15.000.000 VNĐ/năm</div>
+                </div>
+            </div>
+            <div class="col-md-9 majorChooser" style="margin-bottom: -99999px; padding-bottom: 99999px;">
+                <div id="searchBox" class="searchBox">
+                    <input placeholder="Tìm kiếm"
+                           style="background-color: rgba(255, 255, 255, 0); border: 0px; width: 95%;">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+                <div class="wrapper2">
+                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
+                        <div class="uniTit">Đại học Khoa học tự nhiên - ĐHQG-HCM</div>
+                    </div>
+                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
+                        <div class="uniTit">Đại học Bách khoa TP. HCM</div>
+                    </div>
+                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
+                        <div class="uniTit">Đại học Công nghệ thông tin - ĐHQG-HCM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var listOfUniversity;
+        var listOfArea;
+
+        $.get("/api/listOfUniversity", function (data) {
+            listOfUniversity = data;
+            let nameOfArea = Object.keys(listOfUniversity);
+            let area = $('.area-group')[0];
+            for (let i = 0; i < nameOfArea.length; i++) {
+                let temp = "<div class='fieldContent'>" + nameOfArea[i] + "</div>"
+                $(area).append(temp);
+            }
+
+            $(area).append("<div id='btnMore' class='seeMore'>Xem thêm</div>")
+        }, "json").done(function () {
+            $('.fieldContent').on('click', function () {
+                let universities = $('.majorChooser .wrapper2')[0];
+                $(universities).empty();
+                let text = $(this).text();
+                for (let i = 0; i < listOfUniversity[text].length; i++) {
+                    let temp = "<div class='uni' style=\"background-image: url(" + "'/assets/img/university/thumbnail.jpg')" + ";\"><div class='uniTit'>" + listOfUniversity[text][i] + "</div></div>";
+                    $(universities).append(temp);
+                }
+            })
+        })
+
+    })
+</script>
+{% endblock %}
