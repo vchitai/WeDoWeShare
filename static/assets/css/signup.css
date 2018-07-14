@@ -1,0 +1,55 @@
+#title{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+input{
+    height: 50px;
+    width: 500px;
+    background-color: #203260;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+input:focus{
+    opacity: 1;
+}
+
+::-webkit-input-placeholder{
+    color: #fff;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+::-moz-placeholder{
+    color: #fff;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+#formLogin{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btnSignup{
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #fff;
+    color: #1a284d;
+    border-radius: 30px;
+    opacity: 0.95;
+    border: 0px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.btnSignup:hover{
+    text-decoration: none;
+    opacity: 1;
+}

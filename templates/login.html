@@ -1,32 +1,32 @@
-<script src="./js/jquery-3.3.1.min.js"></script>
-<script src="./js/popper.min.js"></script>
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<script src="./js/bootstrap.min.js"></script>
-
+{% include "head.html" %}
 {% block body %}
 {% include "header.html" %}
-<div class="container text-center">
-    {% if session['logged_in'] %}
-    <p>You're logged in already!</p>
-    {% else %}
 
-    <form class="form-signin" action="/login" method="POST">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72"
-             height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="username" name="username" id="inputEmail" class="form-control" placeholder="Username" required
-               autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-    {% endif %}
+    {% if session['logged_in'] %}
+<div class="container text-center">
+    <p>You're logged in already!</p>
 </div>
+    {% else %}
+    <div class="containerBg">
+        <div class="container">
+            <div id="intro" style="text-align: center; margin-top: 50px;">
+                <div id="title">Đăng nhập</div>
+                <div id="des">Vui lòng đăng nhập để tiếp tục</div>
+            </div>
+            <div>
+                <form id="formLogin" action="/login" method="POST">
+                    <div>TÊN NGƯỜI DÙNG</div>
+                    <input type="username" name="username" id="inputUserName" placeholder="Tên người dùng">
+                    <div style="margin-top: 20px;">MẬT KHẨU</div>
+                    <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
+                    <div style="padding-left: 350px; font-size: 13px; font-style: italic; margin-top:5px">Quên mật khẩu?</div>
+                    <div>
+                        <button class="btnLogin" type="submit">ĐĂNG NHẬP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 {% include "footer.html" %}
 {% endblock %}

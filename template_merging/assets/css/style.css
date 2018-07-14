@@ -1,0 +1,67 @@
+body{
+    font-family: Montserrat;
+    height: 100%;
+    background-color: #203260;
+}
+
+.narbavIndex{
+	text-align: center;
+	width: 100%;
+	height: 80px;
+    z-index: 99;
+    background: #1a284d;
+    position: fixed;
+    display: inline-block;
+}
+
+.container-fluid{
+	width: 100%;
+	margin-right: 15px;
+}
+
+.liNav{
+	font-size: 15px;
+    color: #fff;
+    opacity: 0.75;
+	font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.liNav:hover{
+    color: #fff!important;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.navRight{
+    height: 100px;
+    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 50px;
+    color: #fff;
+    padding-top: 30px;
+}
+
+.btnSignupNav{
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #fff;
+    color: #1a284d;
+    border-radius: 30px;
+    opacity: 0.95;
+}
+
+.btnSignupNav:hover{
+    text-decoration: none;
+    opacity: 1;
+}
+
+.containerBg{
+    height: 100%;
+    font-size: 16px;
+    padding-top: 100px;
+    color: #fff;
+}

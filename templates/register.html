@@ -1,0 +1,75 @@
+{% include "head.html" %}
+{% block body %}
+{% include "header.html" %}
+    {% if session['logged_in'] %}
+<div class="container text-center">
+    <p>You're logged in already!</p>
+</div>
+    {% else %}
+<!--
+    <form class="form-signin" action="/register" method="POST">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72"
+             height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="username" name="username" id="inputEmail" class="form-control" placeholder="Username" required
+               autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>-->
+
+
+    <div class="containerBg">
+        <div class="container">
+            <div id="intro" style="text-align: center; margin-top: 50px;">
+                <div id="title">Đăng ký</div>
+                <div id="des">Vui lòng đăng ký để tiếp tục</div>
+            </div>
+            <div>
+                <form id="formLogin" action="/register" method="POST">
+                    <div class="row container">
+                        <div class="col-md-6">
+                            <div>TÊN NGƯỜI DÙNG</div>
+                            <input type="text" name="username" id="inputUserName" placeholder="Tên người dùng">
+                        </div>
+                        <div class="col-md-6">
+                            <div>EMAIL</div>
+                            <input type="text" id="inputEmail" placeholder="Nhập email">
+                        </div>
+                    </div>
+                    <div class="row container">
+                        <div class="col-md-6">
+                            <div style="margin-top: 20px;">MẬT KHẨU</div>
+                            <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
+                        </div>
+                        <div class="col-md-6">
+                            <div style="margin-top: 20px;">NHẬP LẠI MẬT KHẨU</div>
+                            <input type="password" id="inputRetype" placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+                    <div class="row container">
+                        <div class="col-md-6">
+                            <div style="margin-top: 20px;">SỐ ĐIỆN THOẠI</div>
+                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại">
+                        </div>
+                        <div class="col-md-6">
+                            <div style="margin-top: 20px;">FACEBOOK</div>
+                            <input type="text" id="inputFb" placeholder="Nhập facebook">
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btnSignup" type="submit">ĐĂNG KÝ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% include "footer.html" %}
+{% endblock %}
