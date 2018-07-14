@@ -1,32 +1,43 @@
 {% include "head.html" %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 {% block body %}
 {% include "header.html" %}
 
-    {% if session['logged_in'] %}
+{% if session['logged_in'] %}
 <div class="container text-center">
     <p>You're logged in already!</p>
 </div>
-    {% else %}
-    <div class="containerBg">
-        <div class="container">
-            <div id="intro" style="text-align: center; margin-top: 50px;">
-                <div id="title">Đăng nhập</div>
-                <div id="des">Vui lòng đăng nhập để tiếp tục</div>
-            </div>
-            <div>
-                <form id="formLogin" action="/login" method="POST">
-                    <div>TÊN NGƯỜI DÙNG</div>
-                    <input type="username" name="username" id="inputUserName" placeholder="Tên người dùng">
-                    <div style="margin-top: 20px;">MẬT KHẨU</div>
-                    <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
-                    <div style="padding-left: 350px; font-size: 13px; font-style: italic; margin-top:5px">Quên mật khẩu?</div>
-                    <div>
-                        <button class="btnLogin" type="submit">ĐĂNG NHẬP</button>
-                    </div>
-                </form>
-            </div>
+{% else %}
+<div class="containerBg">
+    <div class="container">
+        <div id="intro" style="text-align: center; margin-top: 50px;">
+            <div id="title">Đăng nhập</div>
+            <div id="des">Vui lòng đăng nhập để tiếp tục</div>
+        </div>
+        <div>
+            <form id="formLogin" action="/login" method="POST">
+                <div>TÊN NGƯỜI DÙNG</div>
+                <input type="username" name="username" id="inputUserName" placeholder="Tên người dùng">
+                <div style="margin-top: 20px;">MẬT KHẨU</div>
+                <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
+                <div style="padding-left: 350px; font-size: 13px; font-style: italic; margin-top:5px">Quên mật khẩu?
+                </div>
+                <div>
+                    <button class="btnLogin" type="submit">ĐĂNG NHẬP</button>
+                </div>
+            </form>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 {% include "footer.html" %}
 {% endblock %}

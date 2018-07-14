@@ -2,80 +2,63 @@
 {% block body %}
 {% include "header.html" %}
 
-<div class="containerBg">
-    <div class="container">
-        <!--Title-->
-        <div class="row">
-            <div class="col-md-6">
-                <div id="title">Chọn ngành</div>
-            </div>
-            <div class="col-md-6">
-                <button class="next" style="display: none;">
-                    CHỌN TRƯỜNG
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-            </div>
-        </div>
-        <!--Major-->
-        <div class="row" style="margin-bottom: 50px;">
-            <div class="col-md-4 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
-                <div class="groupChooser">Công nghệ</div>
-                <div class="groupSelected">Y tế</div>
-                <div class="groupChooser">Xây dựng</div>
-            </div>
-            <div class="col-md-8 majorChooser" style="margin-bottom: -99999px; padding-bottom: 99999px;">
-                <div id="searchBox" class="searchBox">
-                    <input placeholder="Tìm kiếm"
-                           style="background-color: rgba(255, 255, 255, 0); border: 0px; width: 95%;">
-                    <span class="glyphicon glyphicon-search"></span>
+    <div class="containerBg">
+        <div class="container">
+            <!--Title-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="title">Chọn ngành</div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="major">
-                            <img src="assets/img/major/thumbnail.png" height="150px">
-                            <div style="padding: 10px">Y học cổ truyền</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="major">
-                            <img src="assets/img/major/thumbnail.png" height="150px">
-                            <div style="padding: 10px">Y sĩ đa khoa</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="major">
-                            <img src="assets/img/major/thumbnail.png" height="150px">
-                            <div style="padding: 10px">Bác sĩ</div>
-                        </div>
-                    </div>
+                <div class="col-md-6">
+                    <button class="next" style="display: none;">
+                        CHỌN TRƯỜNG
+                        <span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="major">
-                            <img src="assets/img/major/thumbnail.png" height="150px">
-                            <div style="padding: 10px">Điều dưỡng</div>
-                        </div>
+            </div>
+            <!--Major-->
+            <div class="row" style="margin-bottom: 50px;">
+                <div class="col-md-4 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
+                </div>
+                <div class="col-md-8 majorChooser" style="margin-bottom: -99999px; padding-bottom: 99999px;">
+                    <div id="searchBox" class="searchBox">
+                        <input placeholder="Tìm kiếm" style="background-color: rgba(255, 255, 255, 0); border: 0px; width: 95%;">
+                        <span class="glyphicon glyphicon-search"></span>
                     </div>
-                    <div class="col-md-4">
-                        <div class="major">
-                            <img src="assets/img/major/thumbnail.png" height="150px">
-                            <div style="padding: 10px">Dược</div>
-                        </div>
+                    <div class="row">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.get("/api/listOfUniversity", function (data) {
-            console.log(data)
-        }, "json");
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-        $.get("/api/listOfFalcuty", function (data) {
-            console.log(data)
-        }, "json");
-    })
-</script>
+                var chooser = [];
+                var listMajor;
+                $.get("/api/listOfUniversity", function (data) {
+                    console.log(data)
+                }, "json");
+
+                $.get("/api/listOfFalcuty", function (data) {
+                    let major = $($('div.chooser')[0]);
+                    listMajor = data;
+                    for (let i = 0; i < data.length; i++) {
+                        let temp = "<div class='groupChooser'>" + data[i][0] + "</div>";
+                        chooser.push(data[i][0]);
+                        major.append(temp);
+                    }
+                }, "json").done(function(){
+                    $('.groupChooser').on("click", function(){
+                        let text = $(this).text();
+                        let mainMajor = $('.majorChooser .row')[0];
+                        $(mainMajor).empty();
+                        let index = chooser.indexOf(text);
+                        for(let i = 1; i < listMajor[index].length; i++){
+                            let temp = "<div class='col-md-4'><div class='major'><img src='assets/img/major/thumbnail.png' height='150px'><div>" + listMajor[index][i] + "</div></div></div>";
+                            $(mainMajor).append(temp);
+                        }
+                    })
+                });
+            })
+        </script>
 {% include "footer.html" %}
 {% endblock %}

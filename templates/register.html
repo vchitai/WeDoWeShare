@@ -1,11 +1,21 @@
 {% include "head.html" %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 {% block body %}
 {% include "header.html" %}
-    {% if session['logged_in'] %}
+{% if session['logged_in'] %}
 <div class="container text-center">
     <p>You're logged in already!</p>
 </div>
-    {% else %}
+{% else %}
 <!--
     <form class="form-signin" action="/register" method="POST">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72"
@@ -24,52 +34,108 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>-->
 
-
-    <div class="containerBg">
-        <div class="container">
-            <div id="intro" style="text-align: center; margin-top: 50px;">
-                <div id="title">Đăng ký</div>
-                <div id="des">Vui lòng đăng ký để tiếp tục</div>
-            </div>
-            <div>
-                <form id="formLogin" action="/register" method="POST">
-                    <div class="row container">
-                        <div class="col-md-6">
-                            <div>TÊN NGƯỜI DÙNG</div>
-                            <input type="text" name="username" id="inputUserName" placeholder="Tên người dùng">
-                        </div>
-                        <div class="col-md-6">
-                            <div>EMAIL</div>
-                            <input type="text" id="inputEmail" placeholder="Nhập email">
-                        </div>
+<div class="containerBg">
+    <div class="container">
+        <div id="intro" style="text-align: center; margin-top: 50px;">
+            <div id="title">Đăng ký</div>
+            <div id="des">Vui lòng đăng ký để tiếp tục</div>
+        </div>
+        <div>
+            <form id="formLogin" action="/register" method="POST">
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div>TÊN THẬT</div>
+                        <input type="text" id="inputName" placeholder="Tên thật người dùng">
                     </div>
-                    <div class="row container">
-                        <div class="col-md-6">
-                            <div style="margin-top: 20px;">MẬT KHẨU</div>
-                            <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
-                        </div>
-                        <div class="col-md-6">
-                            <div style="margin-top: 20px;">NHẬP LẠI MẬT KHẨU</div>
-                            <input type="password" id="inputRetype" placeholder="Nhập lại mật khẩu">
-                        </div>
+                    <div class="col-md-6">
+                        <div>NGÀY SINH</div>
+                        <input type="text" id="inputBirthday" placeholder="Nhập email">
                     </div>
-                    <div class="row container">
-                        <div class="col-md-6">
-                            <div style="margin-top: 20px;">SỐ ĐIỆN THOẠI</div>
-                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại">
-                        </div>
-                        <div class="col-md-6">
-                            <div style="margin-top: 20px;">FACEBOOK</div>
-                            <input type="text" id="inputFb" placeholder="Nhập facebook">
-                        </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div>TÊN ĐĂNG NHẬP</div>
+                        <input type="text" name="username" id="inputUserName" placeholder="Tên người dùng">
                     </div>
-                    <div>
-                        <button class="btnSignup" type="submit">ĐĂNG KÝ</button>
+                    <div class="col-md-6">
+                        <div>EMAIL</div>
+                        <input type="text" id="inputEmail" placeholder="Nhập email">
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">MẬT KHẨU</div>
+                        <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">NHẬP LẠI MẬT KHẨU</div>
+                        <input type="password" id="inputRetype" placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">SỐ ĐIỆN THOẠI</div>
+                        <input type="text" id="inputPhone" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">FACEBOOK</div>
+                        <input type="text" id="inputFb" placeholder="Nhập facebook">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">LOẠI NGƯỜI DÙNG</div>
+                        <input type="text" id="inputUserType" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">ĐỊA ĐIỂM</div>
+                        <input type="text" id="inputLocation" placeholder="Nhập facebook">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">TRƯỜNG CẤP 3</div>
+                        <input type="text" id="inputHighSchool" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">ĐIỀU KIỆN GIA ĐÌNH</div>
+                        <input type="text" id="inputInheritance" placeholder="Nhập facebook">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-12">
+                        <div style="margin-top: 20px;">Ý ĐỊNH DU HỌC</div>
+                        <input type="text" id="inputStudyAbroad" placeholder="Nhập số điện thoại">
+                    </div>
+                </div>
+                <div>New Section</div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">KHỐI THI</div>
+                        <input type="text" id="inputGrade" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">MỨC ĐỘ AM HIỂU</div>
+                        <input type="text" id="inputUnderstaning" placeholder="Nhập facebook">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">CHUYÊN NGÀNH</div>
+                        <input type="text" id="inputFaculty" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">TRƯỜNG ĐẠI HỌC</div>
+                        <input type="text" id="inputUniversity" placeholder="Nhập facebook">
+                    </div>
+                </div>
+                <div>
+                    <button class="btnSignup" type="submit">ĐĂNG KÝ</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endif %}
 {% include "footer.html" %}
 {% endblock %}

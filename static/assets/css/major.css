@@ -81,12 +81,23 @@
     background: #fff;
     color: #203260;
     border-radius: 10px;
-    margin: 20px 10px;
+    margin: 20px;
+    max-height: 320px;
     min-height: 220px;
     font-size: 22px;
     font-weight: 800;
-    padding: 20px;
+    padding: 20px 0 20px 0;
     text-align: center;
+    opacity: 0.9;
+}
+
+.wrapper2{
+	width: 100%;
+	display: grid;
+	height: 280px;
+	grid-template-columns: 33% 33% 33%;
+    grid-gap: 5px 5px;
+    grid-template-rows: repeat(5, 1.5fr);
     opacity: 0.9;
 }
 
@@ -100,7 +111,7 @@
     border: 1px solid #fff;
     border-radius: 10px;
     margin: 10px;
-    width: 100%;
+    width: 98%;
 }
 
 ::-webkit-input-placeholder{

@@ -19,6 +19,26 @@ input:focus{
     opacity: 1;
 }
 
+select{
+    height: 50px;
+    width: 500px;
+    background-color: #203260;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+select:focus{
+    opacity: 1;
+}
+
+select > option{
+    padding: 10px;
+}
+
 ::-webkit-input-placeholder{
     color: #fff;
     opacity: 0.5;
