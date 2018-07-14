@@ -1,10 +1,7 @@
-import json
+from flask import session, render_template, request, flash, abort, g, jsonify
 
-import simplejson as simplejson
-from flask import session, render_template, request, flash, abort, g
-
-from app import app
-from models import User, db
+from app import app, mongo
+from models import jsonData
 
 
 @app.route("/")
@@ -22,11 +19,19 @@ def login_get():
 def register_get():
     return render_template('register.html', css_file="signup")
 
+@app.route('/api/listOfUniversity')
+def getListOfUniversity():
+    return jsonify(jsonData['university'])
+
+@app.route('/api/listOfFalcuty')
+def getListOfFalcuty():
+    return jsonify(jsonData['falculty'])
+
 @app.route('/login', methods=['POST'])
 def login_post():
     password =  request.form['password']
     username =  request.form['username']
-    user = User.query.filter_by(username=username).first()
+    user = mongo.db.users.find_one({"username": username})
     if user is None:
         abort(404)
     if user.check_password(password):
@@ -48,20 +53,15 @@ def logout():
 def register():
     password =  request.form['password']
     username =  request.form['username']
-    admin = User(username, password)
-    db.session.add(admin)
-    db.session.commit()
+    admin = mongo.db.users.insert_one({"username": username, "password": password})
     return home()
 
 
 @app.route("/tim-partner")
 def tim_partner():
-    with open("summary.json", "r") as f:
-        x = simplejson.loads(f.read())
-        print x
     nganh = request.args.get('nganh')
     if nganh is None:
-        return render_template("chon_nganh.html")
+        return render_template("major.html")
     truong = request.args.get('truong')
     if truong is None:
         return render_template("chon_truong.html")

@@ -1,0 +1,116 @@
+#title {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.next {
+    float: right;
+    padding: 15px;
+    font-weight: bold;
+    background: #203260;
+    font-size: 15px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    position: relative;
+    opacity: 1;
+}
+
+.next:hover {
+    background: #fff;
+    color: #203260;
+}
+
+.prev{
+    padding: 15px;
+    font-weight: bold;
+    background: #203260;
+    font-size: 15px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    position: relative;
+    opacity: 1;
+}
+
+.prev:hover {
+    background: #fff;
+    color: #203260;
+}
+
+.chooser {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.025);
+    border-radius: 10px 0 0 10px;
+}
+
+.groupChooser {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 15px;
+}
+
+.groupChooser:hover {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+}
+
+.groupSelected {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.groupSelected:hover {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+}
+
+.majorChooser{
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.075);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 25px;
+}
+
+.row{
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.major{
+    background: #fff;
+    color: #203260;
+    border-radius: 10px;
+    margin: 20px 10px;
+    min-height: 220px;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 20px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.major:hover{
+    opacity: 1;
+}
+
+.searchBox{
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+::-webkit-input-placeholder{
+    color: #fff;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+::-moz-placeholder{
+    color: #fff;
+    opacity: 0.5;
+    font-style: italic;
+}
