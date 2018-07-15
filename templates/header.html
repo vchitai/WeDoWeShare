@@ -1,49 +1,86 @@
 <div class="narbavIndex">
     <div class="row container-fluid">
-        <div class="col-md-3 navbar-header">
+        <div class="col-md-2 navbar-header">
             <a class="navbar-brand" href="/index" id="MobileN">
                 <img src="/assets/img/logo.png" width="100px" style="padding: 10px;">
             </a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="padding-left: 250px;">
             <div id="title" style="padding-top: 10px; color: white;">{{ page_title }}</div>
         </div>
-        <div class=col-md-3>
+        <div class=col-md-4>
 
             {% if session['logged_in'] %}
-            <div class="navRight">
-                <div id="btnAccount">
-                    <a class="liNav" href="/account">ĐỖ HỮU NHẬT NGUYÊN</a>
-                </div>
-            </div>
-
-            <div class="row container-fluid" style="margin-top: -20px;">
-                <div id="menuAccount" class="menuBg">
-                    <a href="">
-                        <div class="menuOptions">Thông tin tài khoản</div>
-                    </a>
-                    <a href="">
-                        <div class="menuOptions">Hộp thư <span class="glyphicon glyphicon-asterisk"></span></div>
-                    </a>
-                    <a href="">
-                        <div class="menuOptions">Đăng xuất</div>
-                    </a>
-                </div>
-            </div>
-            {% else %}
-            <div style="display: block;">
+            <a href="">
                 <div class="navRight">
-                    <div id="btnSignupNav">
-                        <a class="btnSignupNav" href="/signup">ĐĂNG KÝ</a>
+                    <div id="btnAccount">
+                        <div class="liNav" id="linkAccount">ĐỖ HỮU NHẬT NGUYÊN</div>
                     </div>
                 </div>
-                <div class="navRight">
-                    <div id="btnLogin">
-                        <a class="liNav" href="/login">ĐĂNG NHẬP</a>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
+            </a>
         </div>
     </div>
+
+
+    <div class="row container-fluid" style="margin-top: -45px;">
+        <div id="menuAccount" class="menuBg">
+            <a href="/account">
+                <div class="menuOptions">Thông tin tài khoản</div>
+            </a>
+            <a href="/inbox">
+                <div class="menuOptions">Hộp thư</div>
+            </a>
+            <a href="/logout">
+                <div class="menuOptions">Đăng xuất</div>
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <div style="display: block;">
+        <div class="navRight">
+            <div id="btnSignupNav">
+                <a class="btnSignupNav" href="/signup">ĐĂNG KÝ</a>
+            </div>
+        </div>
+        <div class="navRight">
+            <div id="btnLogin">
+                <a class="liNav" href="/login">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#menuAccount").hide();
+        $("#btnLess").hide();
+        $("#info").hide();
+        $("#menuAccount").hover(function () {
+            $("#menuAccount").show();
+        }, function () {
+            $("#menuAccount").hide();
+        });
+        $(".navRight").hover(function () {
+            $("#menuAccount").show();
+        }, function () {
+            $("#menuAccount").hide();
+        });
+        $("#btnMore").click(function () {
+            $("#info").fadeIn();
+            $("#btnLess").show();
+            $("#btnMore").hide();
+            $("#input").fadeOut();
+            $("#msg").fadeOut();
+        });
+        $("#btnLess").click(function () {
+            $("#info").fadeOut();
+            $("#btnLess").hide();
+            $("#btnMore").show();
+            $("#input").fadeIn();
+            $("#msg").fadeIn();
+        });
+    })
+</script>

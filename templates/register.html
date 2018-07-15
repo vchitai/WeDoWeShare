@@ -55,7 +55,6 @@
 <div class="containerBg">
         <div class="container">
             <div id="intro" style="text-align: center; margin-top: 50px;">
-                <div id="title">Đăng ký</div>
                 <div id="des">Vui lòng đăng ký để tiếp tục</div>
             </div>
             <div>
@@ -138,7 +137,7 @@
                         </div>
                     </div>
                     <div class="row container">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div style="margin-top: 20px;">KHỐI THI</div>
                             <select name="grade" id="inputGrade">
                                 <option value="1">A00</option>
@@ -154,7 +153,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <div style="margin-top: 20px;">MỨC ĐỘ AM HIỂU</div>
+                            <div style="margin-top: 20px; display: none;">MỨC ĐỘ AM HIỂU</div>
                             <select name="masterLevel" id="inputMasterLevel">
                                 <option value="1">Sinh viên năm 1-2</option>
                                 <option value="2">Sinh viên năm 3-4</option>
@@ -165,12 +164,14 @@
                     </div>
                     <div class="row container">
                         <div class="col-md-6">
-                            <div style="margin-top: 20px;">CHUYÊN NGÀNH</div>
-                            <input type="text" id="inputFaculty" placeholder="Nhập chuyên ngành của bạn">
+                            <div style="margin-top: 20px; display: none;">CHUYÊN NGÀNH</div>
+                            <select name="major" id="inputFaculty">
+                            </select>
                         </div>
                         <div class="col-md-6">
-                            <div style="margin-top: 20px;">TRƯỜNG ĐẠI HỌC</div>
-                            <input type="text" id="inputUniversity" placeholder="Nhập trường đại học của bạn">
+                            <div style="margin-top: 20px; display: none;">TRƯỜNG ĐẠI HỌC</div>
+                            <select name="university" id="inputUniversity">
+                            </select>
                         </div>
                     </div>
                     <div>
@@ -180,6 +181,8 @@
             </div>
         </div>
     </div>
+    <p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; 2017-2018</p>
+</body>
 <script>
     $(document).ready(function () {
         let understanding = $("#inputMasterLevel")[0];
@@ -196,6 +199,39 @@
         $($(university).siblings()[0]).hide();
 
         $($(grade).parent()[0]).removeClass('col-md-6').addClass('col-md-12');
+
+        let university_faculty;
+        let fullNameOfFaculty;
+
+        $.get("/api/dummyUniversity", function (data) {
+            university_faculty = data;
+
+            let name = Object.keys(university_faculty);
+            for (let i = 0; i < name.length; i++) {
+                let temp = "<option value=\"" + name[i] + "\">" + name[i] + "</option>";
+                $(university).append(temp);
+            }
+
+            let tempLength = Math.floor(university_faculty[name[0]].length / 2);
+            for (let i = 0; i < university_faculty[name[0]].length / 2; i++) {
+
+                let index = name.indexOf(name[0]);
+                let temp = "<option value=\"" + university_faculty[name[0]][i] + "\">" + university_faculty[name[0]][tempLength + i] + "</option>";
+                $(faculty).append(temp);
+            }
+
+        }).done(function () {
+            $(university).on("change", function () {
+                $(faculty).empty();
+                let name = $(this).val();
+                let tempLength = Math.floor(university_faculty[name].length / 2);
+                for (let i = 0; i < university_faculty[name].length / 2; i++) {
+                    let temp = "<option value=\"" + university_faculty[name][i] + "\">" +
+                        university_faculty[name][tempLength + i] + "</option>";
+                    $(faculty).append(temp);
+                }
+            });
+        })
     });
 
     $('#inputUserType').on("change", function () {

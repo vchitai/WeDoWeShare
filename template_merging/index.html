@@ -44,11 +44,73 @@
     </div>
 
     <div class="containerBg">
-        <div class="container">
-            TEST
+        <div class="container" style="text-align: center;">
+
+            <img id="gif" src="./assets/img/index.gif" width="900px">
+            <div class="row">
+                <div style="position: relative;">
+                    <div id="des1" class="welcome">We know We share là một người bạn đồng hành của các bạn học sinh đang cần định hướng nghề nghiệp.</div>
+                    <div id="des2" class="welcome">Bước 1: Hãy chọn ngành một mà bạn yêu thích, mà bạn đang phân vân.</div>
+                    <div id="des3" class="welcome">Bước 2: Tiếp theo, hãy chọn một trường có tuyển ngành mà bạn quan tâm.</div>
+                    <div id="des4" class="welcome">Cuối cùng! Tìm được những cựu sinh viên có thể hỗ trợ bạn tốt nhất để chọn một trường đại học phù hợp nhất.</div>
+                    <div id="welcome" class="welcome" style="margin-top: 200px;">
+                        Chào mừng bạn đến với We know We share!<br>
+                        Với các cựu sinh viên đầy nhiệt huyết sẵn sàng hỗ trợ bạn, chúng tôi mong rằng sẽ hỗ trợ bạn tìm được ngành học thật sự phù hợp với chính mình!
+                        <br>
+                        <button class="btnSignupNav" style="border: 0">BẮT ĐẦU</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="./assets/js/index.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#des1").hide();
+            $("#des2").hide();
+            $("#des3").hide();
+            $("#des4").hide();
+            $("#welcome").hide();
+            setTimeout(des1Show, 1000);
+            setTimeout(des2Show, 4000);
+            setTimeout(des3Show, 9130);
+            setTimeout(des4Show, 14200);
+            setTimeout(des4Hide, 19000);
+            setTimeout(welcShow, 21000);
+            setTimeout(gifHide, 20000);
+        })
 
+        var gifHide = function () {
+            $("#gif").fadeOut('fast');
+        }
+
+        var des1Show = function () {
+            $("#des1").fadeIn('slow');
+        }
+
+        var des2Show = function () {
+            $("#des1").fadeOut('slow');
+            $("#des2").fadeIn('slow');
+        }
+
+        var des3Show = function () {
+            $("#des2").fadeOut('slow');
+            $("#des3").fadeIn('slow');
+        }
+
+        var des4Show = function () {
+            $("#des3").fadeOut('slow');
+            $("#des4").fadeIn('slow');
+        }
+
+        var des4Hide = function () {
+            $("#des4").fadeOut('slow');
+        }
+
+        var welcShow = function(){
+            $("#welcome").fadeIn('slow');
+        }
+    </script>
 </body>
 
 </html>

@@ -2,9 +2,9 @@
 import json
 
 from flask import session, render_template, request, flash, abort, g, jsonify, url_for, redirect
-
+import requests
 from app import app, mongo
-from models import jsonData, User, JSONEncoder
+from models import jsonData, User, JSONEncoder, getUniversityIndex, getMajorIndex, convertResultToListOfList
 
 
 @app.route("/")
@@ -28,6 +28,42 @@ def login_get():
 @app.route('/signup')
 def register_get():
     return render_template('register.html', css_file=["signup"], page_title=u"Đăng kí")
+
+@app.route('/api/stupid-list-m')
+def stupid_list_m():
+    return jsonify(jsonData['stupid-list'])
+@app.route('/api/stupid-list-u')
+def stupid_list_u():
+    return jsonify(jsonData['stupid-list-2'])
+@app.route('/api/dummyUniversity')
+def getDummyUniversity():
+    return jsonify(jsonData['dummy-university'])
+
+
+@app.route('/api/findMentor', methods=['POST'])
+def findMentor():
+    if not session.get('logged_in'):
+        abort(404)
+    truong = request.form['university']
+    nganh = request.form['major']
+    user = mongo.db.users.find_one({"username": session['logged_username']})
+    if truong is None or nganh is None:
+        truong = user.__dict__['university']
+        nganh = user.__dict__['major']
+        if truong is None or nganh is None:
+            abort(404)
+    vector = []
+    vector.append(getUniversityIndex(truong)+1)
+    vector.append(getMajorIndex(nganh)+1)
+    vector.append(int(user['grade']))
+    vector.append(int(user['price']))
+    vector.append(int(user['studyAbroad']))
+    vector.append(int(user['grade']))
+    print vector
+    #192.168.33.189, headers={'Content-type': 'multipart/form-data'}
+    r = requests.post(url='http://192.168.33.189:5555/api/suggest', json={"vector":vector})
+
+    return json.dumps(convertResultToListOfList(r.text))
 
 
 @app.route('/api/linkToUniversityNoSymbol')
@@ -74,6 +110,7 @@ def logout():
         return login_get()
     session['logged_in'] = False
     return home()
+
 
 @app.route("/inbox")
 def inbox():
@@ -150,7 +187,8 @@ def major_detail(nganh):
     if nganh not in jsonData['map-faculty']:
         abort(404)
     dummy = majors_detail['majors']["cong-nghe-thong-tin-cntt"]
-    return render_template("major-detail.html", page_title=jsonData['map-faculty'][nganh], css_file=["major-detail", "major"],
+    return render_template("major-detail.html", page_title=jsonData['map-faculty'][nganh],
+                           css_file=["major-detail", "major"],
                            nganh=jsonData['map-faculty'][nganh], nganh_root=nganh,
                            detail=majors_detail['majors']["cong-nghe-thong-tin-cntt"])
 
@@ -197,8 +235,11 @@ def tim_nganh():
             found = True
             truongR = jsonData['university'][x][jsonData['university-link'][x].index(truong)]
     if not found:
-        return render_template("universities.html", page_title=u"Chọn trường", css_file=["university"], nganh_root=nganh)
-    return render_template("result.html", page_title=u"Tư vấn viên", css_file=["result", "alumni"], truong=truongR, nganh=jsonData['map-faculty'][nganh])
+        return render_template("universities.html", page_title=u"Chọn trường", css_file=["university"],
+                               nganh_root=nganh)
+    return render_template("result.html", page_title=u"Tư vấn viên", css_file=["result", "alumni"], truong=truongR,
+                           nganh=jsonData['map-faculty'][nganh], truong_root=truong, nganh_root=nganh)
+
 
 @app.route("/account")
 def account_info():

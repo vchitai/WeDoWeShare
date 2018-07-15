@@ -98,3 +98,10 @@ body{
     height: 200px;
     background: #fff
   }
+
+  
+.welcome{
+    font-size: 35px;
+    margin-bottom: 50px;
+    position: absolute;
+}

@@ -1,62 +1,77 @@
 {% extends "base_template.html" %}
 
 {% block content %}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $.post("/api/findMentor", {
+            "university": "{{ truong_root }}",
+            "major": "{{ nganh_root }}",
+        })
+            .done(function (alumninAtrribute) {
+                console.log(alumninAtrribute);
+            });
+    })
+</script>
 <div class="modal">
     abcd
 </div>
 <div class="containerBg">
     <div class="container">
-            <!--Title-->
-            <div class="row">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-6">
-                    <!--Process Bar-->
-                    <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
-                        <tr>
-                            <td id="processing" class="chiTietGH doneGH">
-                                <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
-                            </td>
-                            <td id="psConnector">
-                                <div class="ctghConnector doneGH">
-                                </div>
-                            </td>
-                            <td id="shipping" class="chiTietGH doneGH">
-                                <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
-                            </td>
-                            <td id="psConnector">
-                                <div class="ctghConnector doneGH">
-                                </div>
-                            </td>
-                            <td id="shipping" class="chiTietGH doneGH">
-                                <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="seperatorNgangInfo" style="display: inline-block; margin-bottom: 20px; text-align: center;">
-                        <tr style="margin: auto;">
-                            <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                                Chọn ngành
-                            </td>
-                            <td width="185px"></td>
-                            <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                                Chọn trường
-                            </td>
-                            <td width="185px"></td>
-                            <td width="65px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                                Kết quả
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                </div>
+        <!--Title-->
+        <div class="row">
+            <div class="col-md-3">
             </div>
-            <center>
-                <content>Danh sách các cựu sinh viên từng học ngành </content>
-                <content class="result"> {{ nganh }}</content> tại trường
-                <content class="result"> {{ truong }}</content>
-            </center>
+            <div class="col-md-6">
+                <!--Process Bar-->
+                <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
+                    <tr>
+                        <td id="processing" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector doneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector doneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                    </tr>
+                </table>
+                <table class="seperatorNgangInfo"
+                       style="display: inline-block; margin-bottom: 20px; text-align: center;">
+                    <tr style="margin: auto;">
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Chọn ngành
+                        </td>
+                        <td width="185px"></td>
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Chọn trường
+                        </td>
+                        <td width="185px"></td>
+                        <td width="65px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Kết quả
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        <center>
+            <content>Danh sách các cựu sinh viên từng học ngành</content>
+            <content class="result"> {{ nganh }}</content>
+            tại trường
+            <content class="result"> {{ truong }}</content>
+        </center>
 
         <!--Detail-->
         <div class="row" style="margin-bottom: 50px;">
@@ -201,7 +216,7 @@
                         </div>
                         <div class="col-md-4">
                             <a href="/inbox">
-                            <span class="glyphicon glyphicon-comment alDetailPic"></span></a>
+                                <span class="glyphicon glyphicon-comment alDetailPic"></span></a>
                         </div>
                     </div>
                 </div>
@@ -210,10 +225,9 @@
                 <div style="margin-bottom: 30px;" class="alDetail">
                     <div class="alDetailTit" style="text-align: center; margin-bottom: 20px;">Vị trí</div>
                     <div class="row" style="text-align: center; padding: 5px;">
+                        <button class="btn btn-primary" onclick="map_load()" > Load bản đồ</button>
                     </div>
                 </div>
-
-                <button onclick="map_load()">Load bản đồ</button>
             </div>
         </div>
     </div>
