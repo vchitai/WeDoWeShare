@@ -237,7 +237,7 @@ def tim_nganh():
     if not found:
         return render_template("universities.html", page_title=u"Chọn trường", css_file=["university"],
                                nganh_root=nganh)
-    return render_template("result.html", page_title=u"Tư vấn viên", css_file=["result", "alumni"], truong=truongR,
+    return render_template("result2.html", page_title=u"Tư vấn viên", css_file=["result", "alumni"], truong=truongR,
                            nganh=jsonData['map-faculty'][nganh], truong_root=truong, nganh_root=nganh)
 
 

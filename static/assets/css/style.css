@@ -106,18 +106,9 @@ body{
     position: absolute;
 }
 
-#title {
-    font-size: 40px;
-    font-weight: 700;
-}
-
 .footer{
-    clear: both;
-    position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;
 	text-align: center;
+	width: 100%;
     background: #1a284d;
     color: white;
     padding: 5px;
