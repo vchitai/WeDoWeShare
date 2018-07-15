@@ -12,11 +12,13 @@ def home():
     if not session.get('logged_in'):
         return login_get()
     else:
-        return render_template('home.html', css_file=["home"], page_title=u"Trang chủ",)
+        return render_template('home.html', css_file=["home"], page_title=u"Trang chủ", )
+
 
 @app.route("/index")
 def index():
     return home()
+
 
 @app.route('/login')
 def login_get():
@@ -28,13 +30,20 @@ def register_get():
     return render_template('register.html', css_file=["signup"], page_title=u"Đăng kí")
 
 
+@app.route('/api/linkToUniversityNoSymbol')
+def getLinkToUniversityNoSymbol():
+    return jsonify(jsonData['university-link'])
+
+
 @app.route('/api/linkToUniversity')
 def getLinkToListOfUniversity():
     return jsonify(jsonData['link-to-university'])
 
+
 @app.route('/api/listOfUniversity')
 def getListOfUniversity():
     return jsonify(jsonData['university'])
+
 
 @app.route('/api/listOfFalcuty')
 def getListOfFalcuty():
@@ -52,16 +61,25 @@ def login_post():
     print user.check_password(password)
     if user.check_password(password):
         session['logged_in'] = True
-        session['logged_user'] = JSONEncoder().encode(user.__dict__)
+        session['logged_username'] = user.username
         return redirect(url_for("home"))
     else:
         flash(u'Mật khẩu sai')
         return login_get()
 
+
 @app.route("/logout")
 def logout():
+    if not session.get('logged_in'):
+        return login_get()
     session['logged_in'] = False
     return home()
+
+@app.route("/inbox")
+def inbox():
+    if not session.get('logged_in'):
+        return login_get()
+    return render_template("inbox.html", page_title=u"Nhắn tin", css_file=["inbox", "alumni", "result"])
 
 
 @app.route("/register", methods=['POST'])
@@ -70,13 +88,14 @@ def register():
     username = request.form['username']
     user = mongo.db.users.find_one({"username": username})
     if user is None:
-        user = User({"username": username})
+        user = User(request.form)
         user.hash_password(password)
         user.commit()
         return login_get()
     else:
         flash(u"Người dùng đã tồn tại")
         return register_get()
+
 
 majors_detail = {
     "majors": {
@@ -122,30 +141,67 @@ majors_detail = {
         }
     }
 }
+
+
 @app.route("/nganh/<nganh>")
 def major_detail(nganh):
+    if not session.get('logged_in'):
+        return login_get()
     if nganh not in jsonData['map-faculty']:
         abort(404)
     dummy = majors_detail['majors']["cong-nghe-thong-tin-cntt"]
+    return render_template("major-detail.html", page_title=jsonData['map-faculty'][nganh], css_file=["major-detail", "major"],
+                           nganh=jsonData['map-faculty'][nganh], nganh_root=nganh,
+                           detail=majors_detail['majors']["cong-nghe-thong-tin-cntt"])
 
-    print dummy
-    return render_template("major-detail.html", page_title=u"Chi tiết ngành", css_file=["major-detail", "major"], nganh=jsonData['map-faculty'][nganh], nganh_root = nganh, detail=majors_detail['majors']["cong-nghe-thong-tin-cntt"])
+
+@app.route("/truong/<truong>")
+def school_detail(truong):
+    if not session.get('logged_in'):
+        return login_get()
+    found = False
+    for x in jsonData['university-link']:
+        if truong in x:
+            found = True
+            truongR = jsonData['university'][jsonData['university-link'].indexOf(truong)]
+    if not found:
+        abort(404)
+    return render_template("uni-detail.html", page_title=truongR, css_file=["uni-detail"], truong=truongR,
+                           truong_root=truong)
+
 
 @app.route("/tim-truong")
 def tim_truong():
+    if not session.get('logged_in'):
+        return login_get()
     nganh = request.args.get('nganh')
     if nganh is None:
-        return render_template("major.html", css_file=["major"], page_title=u"Chọn ngành",)
+        return render_template("major.html", css_file=["major"], page_title=u"Chọn ngành", )
     if nganh not in jsonData['map-faculty']:
         abort(404)
-    return render_template("universities.html", page_title=u"Chọn trường đào tạo " + jsonData['map-faculty'][nganh], css_file=["universities"], nganh=jsonData['map-faculty'][nganh], nganh_root = nganh,)
+    return render_template("universities.html", page_title=u"Chọn trường đào tạo",
+                           css_file=["universities"], nganh=jsonData['map-faculty'][nganh], nganh_root=nganh, )
+
 
 @app.route("/tim-nganh")
 def tim_nganh():
+    if not session.get('logged_in'):
+        return login_get()
     nganh = request.args.get('nganh')
     if nganh is None:
-        return render_template("major.html", css_file=["major"], page_title=u"Chọn ngành",)
+        return render_template("major.html", css_file=["major"], page_title=u"Chọn ngành")
     truong = request.args.get('truong')
-    if truong is None:
-        return render_template("chon_truong.html", page_title=u"Chọn trường",)
-    return render_template("suggest_tvv.html", page_title=u"Chọn tư vấn viên",)
+    found = False
+    for x in jsonData['university-link']:
+        if truong in jsonData['university-link'][x]:
+            found = True
+            truongR = jsonData['university'][x][jsonData['university-link'][x].index(truong)]
+    if not found:
+        return render_template("universities.html", page_title=u"Chọn trường", css_file=["university"], nganh_root=nganh)
+    return render_template("result.html", page_title=u"Tư vấn viên", css_file=["result", "alumni"], truong=truongR, nganh=jsonData['map-faculty'][nganh])
+
+@app.route("/account")
+def account_info():
+    if not session.get('logged_in'):
+        return login_get()
+    return render_template("account-info.html", page_title=u"Thông tin tài khoản", css_file=["signup"])

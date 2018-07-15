@@ -11,12 +11,32 @@ input{
     border: 1px solid #fff;
     border-radius: 10px;
     margin-top: 10px;
-    padding: 20px;
+    padding: 10px;
     opacity: 0.5;
 }
 
 input:focus{
     opacity: 1;
+}
+
+select{
+    height: 50px;
+    width: 500px;
+    background-color: #203260;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    opacity: 0.5;
+}
+
+select:focus{
+    opacity: 1;
+}
+
+select > option{
+    padding: 10px;
 }
 
 ::-webkit-input-placeholder{
@@ -36,7 +56,7 @@ input:focus{
     text-align: center;
 }
 
-.btnLogin{
+.btnSignup{
     padding: 12px 25px;
     font-size: 15px;
     font-weight: bold;
@@ -46,9 +66,10 @@ input:focus{
     opacity: 0.95;
     border: 0px;
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
-.btnLogin:hover{
+.btnSignup:hover{
     text-decoration: none;
     opacity: 1;
 }

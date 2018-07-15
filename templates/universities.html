@@ -5,18 +5,61 @@
     <div class="container">
         <!--Title-->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <a href="/nganh/{{ nganh_root }}">
                     <button class="prev">
-                    <span class="glyphicon glyphicon-chevron-left">
-                    </span>{{ nganh }}
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        TRỞ VỀ
                     </button>
                 </a>
             </div>
             <div class="col-md-6">
-                <div id="title">Chọn trường đào tạo {{ nganh }}</div>
+                <!--Process Bar-->
+                <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
+                    <tr>
+                        <td id="processing" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector doneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector notdoneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH notdoneGH">
+                            <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                    </tr>
+                </table>
+                <table class="seperatorNgangInfo"
+                       style="display: inline-block; margin-bottom: 20px; text-align: center;">
+                    <tr style="margin: auto;">
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Chọn ngành
+                        </td>
+                        <td width="185px"></td>
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Chọn trường
+                        </td>
+                        <td width="185px"></td>
+                        <td width="65px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                            Kết quả
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
             </div>
         </div>
+        <center>
+            <content>Danh sách các trường đại học / cao đẳng có đào tạo ngành</content>
+            <content class="result"> {{ nganh }}</content>
+        </center>
         <!--Major-->
         <div class="row" style="margin-bottom: 50px;">
             <div class="col-md-3 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
@@ -45,15 +88,6 @@
                     <span class="glyphicon glyphicon-search"></span>
                 </div>
                 <div class="wrapper2">
-                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
-                        <div class="uniTit">Đại học Khoa học tự nhiên - ĐHQG-HCM</div>
-                    </div>
-                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
-                        <div class="uniTit">Đại học Bách khoa TP. HCM</div>
-                    </div>
-                    <div class="uni" style="background-image: url('/assets/img/university/thumbnail.jpg');">
-                        <div class="uniTit">Đại học Công nghệ thông tin - ĐHQG-HCM</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -63,6 +97,11 @@
     $(document).ready(function () {
         var listOfUniversity;
         var listOfArea;
+        var linkUniversity;
+
+        $.get("/api/linkToUniversityNoSymbol", function (data) {
+            linkUniversity = data;
+        });
 
         $.get("/api/listOfUniversity", function (data) {
             listOfUniversity = data;
@@ -76,11 +115,13 @@
             $(area).append("<div id='btnMore' class='seeMore'>Xem thêm</div>")
         }, "json").done(function () {
             $('.fieldContent').on('click', function () {
+                $('.fieldContent').removeClass('fieldSelected');
+                $(this).addClass('fieldSelected');
                 let universities = $('.majorChooser .wrapper2')[0];
                 $(universities).empty();
                 let text = $(this).text();
                 for (let i = 0; i < listOfUniversity[text].length; i++) {
-                    let temp = "<div class='uni' style=\"background-image: url(" + "'/assets/img/university/thumbnail.jpg')" + ";\"><div class='uniTit'>" + listOfUniversity[text][i] + "</div></div>";
+                    let temp = "<div class='uni' style=\"background-image: url(" + "'/assets/img/university/thumbnail.jpg')" + ";\"><a href =\"/tim-nganh?nganh={{ nganh_root }}&truong=" + linkUniversity[text][i] + "\"><div class='uniTit'>" + listOfUniversity[text][i] + "</div></a></div>";
                     $(universities).append(temp);
                 }
             })

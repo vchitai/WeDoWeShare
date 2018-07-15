@@ -16,7 +16,7 @@ with open("summary.json", "r") as f:
 
 class User():
     def __init__(self, dicts):
-        self.__dict__ = dicts
+        self.__dict__ = dict(dicts)
 
     def hash_password(self, password):
         self.__dict__['password'] = generate_password_hash(password)

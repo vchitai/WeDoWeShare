@@ -65,3 +65,36 @@ body{
     padding-top: 100px;
     color: #fff;
 }
+
+.menuBg{
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+    background: #fff;
+    font-weight: bold;
+    position: relative;
+    margin-right: 20px;
+    float: right;
+    text-align: left;
+    width: 280px;
+    text-decoration: none;
+    color: #1a284d;
+}
+
+.menuOptions{
+    line-height: 200%;
+    opacity: 0.75;
+    text-decoration: none;
+    color: #1a284d;
+    display: block;
+}
+
+.menuOptions:hover{
+    opacity: 1;
+}
+
+.notif{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background: #fff
+  }

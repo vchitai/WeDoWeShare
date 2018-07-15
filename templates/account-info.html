@@ -1,0 +1,90 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+<div class="containerBg">
+    <div class="container">
+        <div id="intro" style="text-align: center; margin-top: 50px;">
+            <div id="title">Thông tin tài khoản</div>
+            <div id="des">Cập nhật thông tin tài khoản để chúng tôi hỗ trợ bạn tốt hơn</div>
+        </div>
+        <div>
+            <form id="formLogin" action="/register" method="POST">
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">TÊN ĐĂNG NHẬP</div>
+                        <input type="text" name="username" id="inputUserName" placeholder="Tên người dùng">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">EMAIL</div>
+                        <input type="text" id="inputEmail" placeholder="Nhập email">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">MẬT KHẨU</div>
+                        <input type="password" name="password" id="inputPassword" placeholder="Nhập mật khẩu">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">NHẬP LẠI MẬT KHẨU</div>
+                        <input type="password" id="inputRetype" placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">SỐ ĐIỆN THOẠI</div>
+                        <input type="text" id="inputPhone" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">LOẠI NGƯỜI DÙNG</div>
+                        <select id="inputUserType">
+                            <option value="consultee">Học sinh/Phụ huynh</option>
+                            <option value="consultor">Cựu học sinh</option>
+                        </select>
+                    </div>
+                </div>
+                <div>New Section</div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">KHỐI THI</div>
+                        <input type="text" id="inputGrade" placeholder="Nhập khối thi của bạn">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">MỨC ĐỘ AM HIỂU</div>
+                        <input type="text" id="inputUnderstaning" placeholder="Nhập mức độ am hiểu">
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">CHUYÊN NGÀNH</div>
+                        <input type="text" id="inputFaculty" placeholder="Nhập chuyên ngành của bạn">
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-top: 20px;">TRƯỜNG ĐẠI HỌC</div>
+                        <input type="text" id="inputUniversity" placeholder="Nhập trường đại học của bạn">
+                    </div>
+                </div>
+                <div>
+                    <button class="btnSignup" type="submit">CẬP NHẬT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; 2017-2018</p>
+<script>
+    $(document).ready(function () {
+        $("#menuAccount").hide();
+        $("#menuAccount").hover(function () {
+            $("#menuAccount").show();
+        }, function () {
+            $("#menuAccount").hide();
+        });
+        $(".navRight").hover(function () {
+            $("#menuAccount").show();
+        }, function () {
+            $("#menuAccount").hide();
+        });
+    })
+</script>
+{% endblock %}

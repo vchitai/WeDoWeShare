@@ -1,0 +1,34 @@
+.alName{
+    font-weight: bold;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.alDetail{
+    padding: 10px;
+}
+
+.alDetailTit{
+    font-size: 12px !important;
+    text-transform: uppercase;
+    letter-spacing: 2;
+    opacity: 0.75;
+}
+
+.alDetailPic{
+    padding: 20px;
+    width: 55px;
+    height: 55px;
+    background: #fff;
+    color: #203260;
+    border-radius: 50%;
+}
+
+.ava{
+    background-image: url('../img/user/ava.jpg');
+    background-size: cover;
+    border-radius: 50%;
+}

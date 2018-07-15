@@ -7,21 +7,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../static/assets/css/major.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/major.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="narbavIndex">
-        <div class="container-fluid">
-            <div class="navbar-header">
+        <div class="row container-fluid">
+            <div class="col-md-3 navbar-header">
                 <a class="navbar-brand" href="./index.html" id="MobileN">
-                    <img src="../static/assets/img/logo.png" width="100px" style="padding: 10px;">
+                    <img src="./assets/img/logo.png" width="100px" style="padding: 10px;">
                 </a>
             </div>
-            <div>
+            <div class="col-md-6">
+                    <div id="title" style="padding-top: 10px; color: white;">Chọn ngành</div>
+            </div>
+            <div class=col-md-3>
                 <div class="navRight">
                     <div id="btnAccount">
                         <a class="liNav" href="./account.html">ĐỖ HỮU NHẬT NGUYÊN</a>
@@ -33,17 +36,46 @@
 
     <div class="containerBg">
         <div class="container">
-            <!--Title-->
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="title">Chọn ngành</div>
-                </div>
-                <div class="col-md-6">
-                    <button class="next" style="display: none;">
-                        CHỌN TRƯỜNG
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                </div>
-            </div>
+            <!--Process Bar-->
+            <table class="seperatorNgangInfo" style="display: inline-block; padding-left: 300px; margin-top: 30px;">
+                <tr>
+                    <td id="processing" class="chiTietGH doneGH">
+                        <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                    <td id="psConnector">
+                        <div class="ctghConnector notdoneGH">
+                        </div>
+                    </td>
+                    <td id="shipping" class="chiTietGH notdoneGH">
+                        <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                    <td id="psConnector">
+                        <div class="ctghConnector notdoneGH">
+                        </div>
+                    </td>
+                    <td id="shipping" class="chiTietGH notdoneGH">
+                        <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                </tr>
+            </table>
+            <table class="seperatorNgangInfo" style="display: inline-block; padding-left: 300px; margin-bottom: 20px; text-align: center;">
+                <tr style="margin: auto;">
+                    <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                        Chọn ngành
+                    </td>
+                    <td width="185px"></td>
+                    <td width="60px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                        Chọn trường
+                    </td>
+                    <td width="185px"></td>
+                    <td width="65px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                        Kết quả
+                    </td>
+                </tr>
+            </table>
+            <center>
+                    <content>Hãy chọn một ngành mà bạn quan tâm!</content>
+            </center>
             <!--Major-->
             <div class="row" style="margin-bottom: 50px;">
                 <div class="col-md-3 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
@@ -58,28 +90,28 @@
                     </div>
                     <div class="wrapper2">
                         <div class="major">
-                                <img src="../static/assets/img/major/thumbnail.png" height="150px">
-                                <div style="padding: 10px">Y học cổ truyền</div>
+                            <img src="assets/img/major/thumbnail.png" height="150px">
+                            <div style="padding: 10px">Y học cổ truyền</div>
                         </div>
                         <div class="major">
-                                <img src="../static/assets/img/major/thumbnail.png" height="150px">
-                                <div style="padding: 10px">Y sĩ đa khoa</div>
+                            <img src="assets/img/major/thumbnail.png" height="150px">
+                            <div style="padding: 10px">Y sĩ đa khoa</div>
                         </div>
                         <div class="major">
-                                <img src="../static/assets/img/major/thumbnail.png" height="150px">
-                                <div style="padding: 10px">Bác sĩ</div>
+                            <img src="assets/img/major/thumbnail.png" height="150px">
+                            <div style="padding: 10px">Bác sĩ</div>
                         </div>
                     </div>
                     <div class="wrapper2">
-                            <div class="major">
-                                    <img src="../static/assets/img/major/thumbnail.png" height="150px">
-                                    <div style="padding: 10px">Điều dưỡng</div>
-                            </div>
-                            <div class="major">
-                                    <img src="../static/assets/img/major/thumbnail.png" height="150px">
-                                    <div style="padding: 10px">Dược</div>
-                            </div>
+                        <div class="major">
+                            <img src="assets/img/major/thumbnail.png" height="150px">
+                            <div style="padding: 10px">Điều dưỡng</div>
                         </div>
+                        <div class="major">
+                            <img src="assets/img/major/thumbnail.png" height="150px">
+                            <div style="padding: 10px">Dược</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

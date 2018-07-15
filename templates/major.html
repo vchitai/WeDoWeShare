@@ -2,6 +2,45 @@
 {% block content %}
 <div class="containerBg">
     <div class="container">
+        <table class="seperatorNgangInfo" style="display: inline-block; padding-left: 300px; margin-top: 30px;">
+                <tr>
+                    <td id="processing" class="chiTietGH doneGH">
+                        <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                    <td id="psConnector">
+                        <div class="ctghConnector notdoneGH">
+                        </div>
+                    </td>
+                    <td id="shipping" class="chiTietGH notdoneGH">
+                        <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                    <td id="psConnector">
+                        <div class="ctghConnector notdoneGH">
+                        </div>
+                    </td>
+                    <td id="shipping" class="chiTietGH notdoneGH">
+                        <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                    </td>
+                </tr>
+            </table>
+            <table class="seperatorNgangInfo" style="display: inline-block; padding-left: 300px; margin-bottom: 20px; text-align: center;">
+                <tr style="margin: auto;">
+                    <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                        Chọn ngành
+                    </td>
+                    <td width="185px"></td>
+                    <td width="60px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                        Chọn trường
+                    </td>
+                    <td width="185px"></td>
+                    <td width="65px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                        Kết quả
+                    </td>
+                </tr>
+            </table>
+            <center>
+                    <content>Hãy chọn một ngành mà bạn quan tâm!</content>
+            </center>
         <!--Title-->
         <div class="row">
             <div class="col-md-6">
@@ -61,7 +100,7 @@
                 let index = chooser.indexOf(text);
                 for (let i = 1; i < listMajor[index].length; i++) {
                     let temp =
-                        "<a href=\"/nganh/" + listLinkToUniversity[index][i] + "\"><div class='col-md-6'><div class='major'><img src='assets/img/major/thumbnail.png' height='150px'><div>" +
+                        "<a href=\"/nganh/" + listLinkToUniversity[index][i] + "\"><div class='col-md-6'><div class='major'><img src='assets/img/"+listLinkToUniversity[index][i]+".jpg' height='150px'><div>" +
                         listMajor[index][i] + "</div></div></div></a>";
                     $(mainMajor).append(temp);
                 }

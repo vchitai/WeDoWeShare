@@ -4,33 +4,73 @@
 
 <div class="containerBg">
     <div class="container">
-        <!--Title-->
-        <div class="row">
-            <div class="col-md-3">
+
+    <div class="containerBg">
+        <div class="container">
+            <!--Title-->
+            <div class="row">
+                <div class="col-md-3">
                 <a href="/tim-nganh">
                     <button class="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         CHỌN NGÀNH
                     </button>
                 </a>
-            </div>
-            <div class="col-md-6">
-                <div id="title" style="text-align: center;">{{ nganh }}</div>
-            </div>
-            <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                                <!--Process Bar-->
+            <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
+                    <tr>
+                        <td id="processing" class="chiTietGH doneGH">
+                            <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector notdoneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH notdoneGH">
+                            <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                        <td id="psConnector">
+                            <div class="ctghConnector notdoneGH">
+                            </div>
+                        </td>
+                        <td id="shipping" class="chiTietGH notdoneGH">
+                            <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                        </td>
+                    </tr>
+                </table>
+                <table class="seperatorNgangInfo" style="display: inline-block; margin-bottom: 20px; text-align: center;">
+                    <tr style="margin: auto;">
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                            Chọn ngành
+                        </td>
+                        <td width="185px"></td>
+                        <td width="60px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                            Chọn trường
+                        </td>
+                        <td width="185px"></td>
+                        <td width="65px" style="padding: 0px;" class="chiTietGHText notdoneGHText">
+                            Kết quả
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div class="col-md-3">
                 <a href="/tim-truong?nganh={{ nganh_root }}">
                     <button class="next">
                         CHỌN TRƯỜNG
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                 </a>
+                </div>
             </div>
-        </div>
+
         <!--Major-->
         <div class="row" style="margin-bottom: 50px;">
             <div class="col-md-4 chooser"
                  style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px; text-align: center;">
-                <img src="/assets/img/major/cover.png" width="90%">
+                <img src="/assets/img/major/{{ nganh_root }}.jpg" width="90%">
             </div>
             <div class="col-md-8 majorChooser" style="margin-bottom: -99999px; padding-bottom: 99999px;">
                 <div id="des">
