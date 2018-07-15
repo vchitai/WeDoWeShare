@@ -217,7 +217,7 @@ def tim_truong():
         return render_template("major.html", css_file=["major"], page_title=u"Chọn ngành", )
     if nganh not in jsonData['map-faculty']:
         abort(404)
-    return render_template("universities.html", page_title=u"Chọn trường đào tạo",
+    return render_template("universities.html", page_title=u"Chọn trường",
                            css_file=["universities"], nganh=jsonData['map-faculty'][nganh], nganh_root=nganh, )
 
 
@@ -245,4 +245,4 @@ def tim_nganh():
 def account_info():
     if not session.get('logged_in'):
         return login_get()
-    return render_template("account-info.html", page_title=u"Thông tin tài khoản", css_file=["signup"])
+    return render_template("account-info.html", page_title=u"Tài khoản", css_file=["signup"])
