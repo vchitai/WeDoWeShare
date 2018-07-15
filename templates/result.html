@@ -18,220 +18,233 @@
     abcd
 </div>
 <div class="containerBg">
-    <div class="container">
-        <!--Title-->
-        <div class="row">
-            <div class="col-md-3">
+        <div class="container">
+            <!--Title-->
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <!--Process Bar-->
+                    <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
+                        <tr>
+                            <td id="processing" class="chiTietGH doneGH">
+                                <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
+                            </td>
+                            <td id="psConnector">
+                                <div class="ctghConnector doneGH">
+                                </div>
+                            </td>
+                            <td id="shipping" class="chiTietGH doneGH">
+                                <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
+                            </td>
+                            <td id="psConnector">
+                                <div class="ctghConnector doneGH">
+                                </div>
+                            </td>
+                            <td id="shipping" class="chiTietGH doneGH">
+                                <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="seperatorNgangInfo" style="display: inline-block; margin-bottom: 20px; text-align: center;">
+                        <tr style="margin: auto;">
+                            <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                                Chọn ngành
+                            </td>
+                            <td width="185px"></td>
+                            <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                                Chọn trường
+                            </td>
+                            <td width="185px"></td>
+                            <td width="65px" style="padding: 0px;" class="chiTietGHText doneGHText">
+                                Kết quả
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                </div>
             </div>
-            <div class="col-md-6">
-                <!--Process Bar-->
-                <table class="seperatorNgangInfo" style="display: inline-block; margin-top: 30px;">
-                    <tr>
-                        <td id="processing" class="chiTietGH doneGH">
-                            <span class="glyphicon glyphicon-briefcase" style="font-size: 30px; padding: 2.5px;"></span>
-                        </td>
-                        <td id="psConnector">
-                            <div class="ctghConnector doneGH">
-                            </div>
-                        </td>
-                        <td id="shipping" class="chiTietGH doneGH">
-                            <span class="glyphicon glyphicon-education" style="font-size: 30px; padding: 2.5px;"></span>
-                        </td>
-                        <td id="psConnector">
-                            <div class="ctghConnector doneGH">
-                            </div>
-                        </td>
-                        <td id="shipping" class="chiTietGH doneGH">
-                            <span class="glyphicon glyphicon-ok" style="font-size: 30px; padding: 2.5px;"></span>
-                        </td>
-                    </tr>
-                </table>
-                <table class="seperatorNgangInfo"
-                       style="display: inline-block; margin-bottom: 20px; text-align: center;">
-                    <tr style="margin: auto;">
-                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                            Chọn ngành
-                        </td>
-                        <td width="185px"></td>
-                        <td width="60px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                            Chọn trường
-                        </td>
-                        <td width="185px"></td>
-                        <td width="65px" style="padding: 0px;" class="chiTietGHText doneGHText">
-                            Kết quả
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-3">
-            </div>
-        </div>
-        <center>
-            <content>Danh sách các cựu sinh viên từng học ngành</content>
-            <content class="result"> {{ nganh }}</content>
-            tại trường
-            <content class="result"> {{ truong }}</content>
-        </center>
-
-        <!--Detail-->
-        <div class="row" style="margin-bottom: 50px;">
-            <div class="col-md-4 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
-                <a href="">
-                    <div class="alumni">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="ava" style="width: 40px; height: 40px;"></div>
-                            </div>
-                            <div class="cold-md-9">
-                                Hoàng Trung Hiếu
-                                <div class="alumniSub">Nam, Sinh viên năm 3</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="alumni alumniSelected">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="ava" style="width: 40px; height: 40px;"></div>
-                            </div>
-                            <div class="cold-md-9">
-                                Đỗ Thành Nhơn
-                                <div class="alumniSub">Nam, Sinh viên năm 3</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="alumni">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="ava" style="width: 40px; height: 40px;"></div>
-                            </div>
-                            <div class="cold-md-9">
-                                Đỗ Hữu Nhật Nguyên
-                                <div class="alumniSub">Nam, Sinh viên năm 3</div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-8 majorChooser"
-                 style="margin-bottom: -99999px; padding-bottom: 99999px; padding-left: 100px; padding-right: 100px;">
-                <center>
-                    <div class="ava" style="margin-top: 30px; width: 150px; height: 150px;"></div>
-                </center>
-                <div class="alName">Hoàng Trung Hiếu</div>
-                <!--Detail-->
-                <div>
-                    <div class="row">
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-calendar alDetailPic"></span>
+            <center>
+                <content style="margin-top: 10px;">Danh sách các cựu sinh viên từng học
+                    <br>Ngành </content>
+                <content class="result">Công nghệ thông tin</content> tại trường
+                <content class="result">Đại học Khoa học Tự nhiên - ĐHQG-HCM</content>
+            </center>
+            <!--Detail-->
+            <div class="row" style="margin-bottom: 50px;">
+                <!--alList-->
+                <div class="col-md-4 chooser" style="padding: 5px 0; margin-bottom: -99999px; padding-bottom: 99999px;">
+                    <a class="mentor" id="0">
+                        <div id="al1" class="alumni alumniSelected">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="ava" style="width: 40px; height: 40px;"></div>
                                 </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Ngày sinh</div>
-                                    <div>21/12/1997</div>
+                                <div class="cold-md-9">
+                                    Lê Quang Nhật
+                                    <div class="alumniSub">Nam, Sinh viên năm 3</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-heart alDetailPic"></span>
+                    </a>
+                    <a class="mentor" id="1">
+                        <div id="al2" class="alumni">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="ava" style="width: 40px; height: 40px;"></div>
                                 </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Sở thích</div>
-                                    <div>Nhảy múa, hát hò</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-briefcase alDetailPic"></span>
-                                </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Trường</div>
-                                    <div>Đại học Khoa học tự nhiên, ĐHQG-HCM</div>
+                                <div class="cold-md-9">
+                                    Hoàng Trung Hiếu
+                                    <div class="alumniSub">Nam, Sinh viên năm 3</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-blackboard alDetailPic"></span>
+                    </a>
+                    <a class="mentor" id="2">
+                        <div id="al3" class="alumni">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="ava" style="width: 40px; height: 40px;"></div>
                                 </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Ngành</div>
-                                    <div>Công nghệ thông tin</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-eye-open alDetailPic"></span>
-                                </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Mức độ am hiểu</div>
-                                    <div>200%</div>
+                                <div class="cold-md-9">
+                                    Lê Hữu Nghị
+                                    <div class="alumniSub">Nam, Sinh viên năm 3</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 alDetail">
-                            <div class="row" height="55px" style="padding: 5px;">
-                                <div class="col-md-4">
-                                    <span class="glyphicon glyphicon-star alDetailPic"></span>
+                    </a>
+                    <a class="mentor" id="3">
+                        <div id="al4" class="alumni">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="ava" style="width: 40px; height: 40px;"></div>
                                 </div>
-                                <div class="cold-md-8" style="padding-top: 10px;">
-                                    <div class="alDetailTit">Đánh giá</div>
-                                    <div id="rate">
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                <div class="cold-md-9">
+                                    Hoàng Thiên Nữ
+                                    <div class="alumniSub">Nam, Sinh viên năm 2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-8 majorChooser" style="margin-bottom: -99999px; padding-bottom: 99999px; padding-left: 100px; padding-right: 100px;">
+                    <!--Start Content 1-->
+                    <div id="alContent1">
+                        <center>
+                            <div class="ava" style="margin-top: 30px; width: 150px; height: 150px;"></div>
+                        </center>
+                        <div id="nameOfMentor" class="alName">Hoàng Trung Hiếu</div>
+                        <!--Detail-->
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-calendar alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Ngày sinh</div>
+                                            <div>21/12/1997</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-heart alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Sở thích</div>
+                                            <div id="hobby">Nhảy múa, hát hò</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-briefcase alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Trường</div>
+                                            <div id="university"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-blackboard alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Ngành</div>
+                                            <div id="major"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-eye-open alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Mức độ am hiểu</div>
+                                            <div id="masterLevel"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 alDetail">
+                                    <div class="row" height="55px" style="padding: 5px;">
+                                        <div class="col-md-4">
+                                            <span class="glyphicon glyphicon-star alDetailPic"></span>
+                                        </div>
+                                        <div class="cold-md-8" style="padding-top: 10px;">
+                                            <div class="alDetailTit">Đánh giá</div>
+                                            <div id="rate">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <hr>
-                <!--Contact-->
-                <div style="margin-bottom: 30px;" class="alDetail">
-                    <div class="alDetailTit" style="text-align: center; margin-bottom: 20px;">Liên hệ</div>
-                    <div class="row" style="text-align: center; padding: 5px;" height="55px">
-                        <div class="col-md-4">
-                            <span class="glyphicon glyphicon-earphone alDetailPic"></span>
+                        <hr>
+                        <!--Contact-->
+                        <div style="margin-bottom: 30px;" class="alDetail">
+                            <div class="alDetailTit" style="text-align: center; margin-bottom: 20px;">Liên hệ</div>
+                            <div class="row" style="text-align: center; padding: 5px;" height="55px">
+                                <div class="col-md-4">
+                                    <span class="glyphicon glyphicon-earphone alDetailPic"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="glyphicon glyphicon-envelope alDetailPic"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="glyphicon glyphicon-comment alDetailPic"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <span class="glyphicon glyphicon-envelope alDetailPic"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="/inbox">
-                                <span class="glyphicon glyphicon-comment alDetailPic"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <!--Location-->
-                <div style="margin-bottom: 30px;" class="alDetail">
-                    <div class="alDetailTit" style="text-align: center; margin-bottom: 20px;">Vị trí</div>
-                    <div class="row" style="text-align: center; padding: 5px;">
+                        <hr>
+                        <!--Location-->
+                        <div style="margin-bottom: 30px;" class="alDetail">
+                            <div class="alDetailTit" style="text-align: center; margin-bottom: 20px;">Vị trí</div>
+                            <div class="row" style="text-align: center; padding: 5px;">
                         <button class="btn btn-primary" onclick="map_load()" > Load bản đồ</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <div id="map-modal" class="modal fade">
     <div id="map"></div>
@@ -256,6 +269,116 @@
             title: 'Hello World!'
         });
     }
+    $(document).ready(function () {
+            $("#menuAccount").hide();
+            $("#menuAccount").hover(function () {
+                $("#menuAccount").show();
+            }, function () {
+                $("#menuAccount").hide();
+            });
+            $(".navRight").hover(function () {
+                $("#menuAccount").show();
+            }, function () {
+                $("#menuAccount").hide();
+            });
+
+            let university;
+            let major;
+
+            $.get("/api/stupid-list-u", function (data) {
+                university = data;
+                console.log(university.length);
+            }).done(function () {
+                $.get("/api/stupid-list-m", function (data) {
+                    major = data;
+                    console.log(major.length);
+                }).done(function () {
+                    let alumni;
+                    let grade = ["A00", "A01", "B00", "C01", "D01", "A03", "V01", "T05", "V01",
+                        "N01"
+                    ];
+                    let price = ["Dưới 8 triệu / năm", "Từ 8 đến 12 triệu / năm",
+                        "Từ 12 đến 20 triệu / năm",
+                        "Trên 20 triệu / năm"
+                    ];
+                    let studyAbroad = ["Có", "không"];
+                    let hobby = "Lập trình";
+                    let masterLevel = ["Sinh viên năm 1-2", "Sinh viên năm 3-4",
+                        "Đã tốt nghiệp khoảng 2 năm",
+                        "Đã tốt nghiệp trên 2 năm"
+                    ];
+
+                    $.post("/api/findMentor", {
+                        "university": "{{ truong_root }}",
+                        "major": "{{ nganh_root }}"
+                    }).done(function (data) {
+                    // let data = [
+                    //     [6, 4, 1, 3, 1, 1, 4, 3],
+                    //     [2, 4, 5, 4, 1, 1, 4, 5],
+                    //     [6, 4, 3, 4, 1, 4, 4, 4],
+                    //     [10, 4, 8, 1, 1, 1, 1, 5],
+                    //     [6, 4, 5, 2, 1, 1, 4, 4]
+                    // ];
+
+                        console.log(data)
+                        data = JSON.parse(data);
+                        let nameOfMentor = ["Lê Quang Nhật", "Hoàng Trung Hiếu", "Lê Hữu Nghị", "Hoàng Thiên Nữ", "Đỗ Hữu Nhật Nguyên"];
+                        alumni = data;
+                        console.log(alumni)
+                        for (let i = 0; i < alumni.length; i++) {
+
+                            alumni[i][0] = university[alumni[i][0] - 1+11];
+                            alumni[i][1] = major[alumni[i][1] - 1+11];
+                            alumni[i][2] = grade[alumni[i][2] - 1];
+                            alumni[i][3] = price[alumni[i][3] - 1];
+                            alumni[i][4] = studyAbroad[alumni[i][4] - 1];
+                            alumni[i][5] = hobby;
+                            alumni[i][6] = masterLevel[alumni[i][6] - 1];
+                            alumni[i][7]
+                            console.log(alumni[i])
+                        }
+
+                        $($('#nameOfMentor')[0]).text(nameOfMentor[0]);
+
+                        $($('#university')[0]).text(alumni[0][0]);
+                        $($('#major')[0]).text(alumni[0][1]);
+                        $($('#masterLevel')[0]).text(alumni[0][6]);
+                        $($('#hobby')[0]).text(alumni[0][5]);
+                        let star = $($('#rate')[0]).siblings();
+                        for (let i = 0; i < Number(alumni[0][7]); i++) {
+                            $(star[i]).removeClass('glyphicon-star-empty').addClass(
+                                'glyphicon-star');
+                        }
+
+                        for (let i = Number(alumni[0][7]); i < star.length; i++) {
+                            $(star[i]).removeClass('glyphicon-star').addClass(
+                                'glyphicon-star-empty');
+                        }
+
+                        $('.mentor').on("click", function () {
+                            let index = $(this).attr('id');
+                            $($('.alumni')).removeClass("alumniSelected");
+                            $($(this).children()[0]).addClass("alumniSelected");
+                            $($('#nameOfMentor')[0]).text(nameOfMentor[index]);
+                            $($('#university')[0]).text(alumni[index][0]);
+                            $($('#major')[0]).text(alumni[index][1]);
+                            $($('#masterLevel')[0]).text(alumni[index][6]);
+                            $($('#hobby')[0]).text(alumni[index][5]);
+                            let star = $($('#rate')[0]).siblings();
+                            for (let i = 0; i < Number(alumni[index][7]); i++) {
+                                $(star[i]).removeClass('glyphicon-star-empty').addClass(
+                                    'glyphicon-star');
+                            }
+
+                            for (let i = Number(alumni[index][7]); i < star.length; i++) {
+                                $(star[i]).removeClass('glyphicon-star').addClass(
+                                    'glyphicon-star-empty');
+                            }
+                        })
+                    })
+                })
+            })
+        })
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtyt2HO4jkT6cGcCChB11LKQ9_DyoxzGs&callback=initMap"
         async defer></script>
